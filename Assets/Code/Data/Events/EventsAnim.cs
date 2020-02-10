@@ -1,4 +1,6 @@
-﻿public partial class Events
+﻿using UnityEngine;
+
+public partial class Events
 {
     public enum Anim
     {
@@ -9,11 +11,16 @@
     }
 }
 
-public partial class EventData
+
+
+public class AnimBoolEvent : GameEvent
 {
-    public class SetBool
+    public readonly string name;
+    public readonly new bool data;
+
+    public AnimBoolEvent(MonoBehaviour emitter, string name, bool val) : base(emitter, null)
     {
-        public string name;
-        public bool val;
+        this.name = name;
+        this.data = val;
     }
 }

@@ -63,7 +63,7 @@ public class Unit : WorldObject
     {
         if (IsAlive)
         {
-            events.Emit(Events.Unit.RecieveDamage, attacker);
+            events.Emit(Events.Unit.RecieveDamage, GameEvent.Create(this, attacker));
             events.Emit(Events.Audio.Combat_RecieveHit);
 
             healthPoints.Value -= amount;

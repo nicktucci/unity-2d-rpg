@@ -33,28 +33,28 @@ public class UnitAnimator : MonoBehaviour
 
         events.MoveStateChanged += UpdateMovementState;
 
-        events.Subscribe(Events.Anim.PlayDeathAnimation, data =>
+        events.Subscribe(Events.Anim.PlayDeathAnimation, e =>
         {
             string label = unit.data.GetOverrideAnimation(Animations.Death) ?? "Death";
             anim.Play(label);
 
         });
-        events.Subscribe(Events.Anim.PlayCombatAnimation, label =>
+        events.Subscribe(Events.Anim.PlayCombatAnimation, e =>
         {
             if (unit.IsAlive)
             {
-                anim.Play((string)label);
+                anim.Play((string)e.data);
                 combatIdleTime = 2.5f;
             }
         });
-        events.Subscribe(Events.Anim.FaceTarget, target =>
+        events.Subscribe(Events.Anim.FaceTarget, e =>
         {
-            FaceTarget((Transform)target);
+            FaceTarget((Transform)e.data);
         });
-        events.Subscribe(Events.Anim.SetBool, data =>
+        events.Subscribe(Events.Anim.SetBool, e =>
         {
-            var props = (EventData.SetBool)data;
-            anim.SetBool(props.name, props.val);
+            var ec = (AnimBoolEvent)e;
+            anim.SetBool(ec.name, ec.data);
         });
         events.Subscribe(Events.Unit.RecieveDamage, data =>
         {

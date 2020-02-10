@@ -5,10 +5,10 @@ using UnityEngine;
 
 public partial class Events : MonoBehaviour
 {
-    private Dictionary<string, List<Action<object>>> dictionary = new Dictionary<string, List<Action<object>>>();
+    private Dictionary<string, List<Action<GameEvent>>> dictionary = new Dictionary<string, List<Action<GameEvent>>>();
     public Action<MovementState> MoveStateChanged;
 
-    private void Subscribe(string eventName, Action<object> listener)
+    private void Subscribe(string eventName, Action<GameEvent> listener)
     {
         if (dictionary.ContainsKey(eventName))
         {
@@ -17,13 +17,13 @@ public partial class Events : MonoBehaviour
         }
         else
         {
-            dictionary.Add(eventName, new List<Action<object>>());
+            dictionary.Add(eventName, new List<Action<GameEvent>>());
             dictionary[eventName].Add(listener);
 
         }
     }
 
-    private void Unsubscribe(string eventName, Action<object> listener)
+    private void Unsubscribe(string eventName, Action<GameEvent> listener)
     {
         if (dictionary.ContainsKey(eventName) && dictionary[eventName].Contains(listener))
         {
@@ -31,22 +31,22 @@ public partial class Events : MonoBehaviour
         } 
     }
 
-    private void Emit(string eventName, object data)
+    private void Emit(string eventName, GameEvent eventData)
     {
         if (dictionary.ContainsKey(eventName))
         {
             foreach (var action in dictionary[eventName])
             {
-                action.Invoke(data);
+                action.Invoke(eventData);
             }
         }
     }
-    public void Subscribe(Enum eventEnum, Action<object> listener)
+    public void Subscribe(Enum eventEnum, Action<GameEvent> listener)
     {
         string eventName = eventEnum.ToString();
         Subscribe(eventName, listener);
     }
-    public void Unsubscribe(Enum eventEnum, Action<object> listener)
+    public void Unsubscribe(Enum eventEnum, Action<GameEvent> listener)
     {
         string eventName = eventEnum.ToString();
         Unsubscribe(eventName, listener);
@@ -56,14 +56,15 @@ public partial class Events : MonoBehaviour
     {
         MoveStateChanged?.Invoke(state);
     }
-    public void Emit(Enum eventName, object data)
+    public void Emit(Enum eventName, GameEvent eventData)
     {
-        Emit(eventName.ToString(), data);
+        Emit(eventName.ToString(), eventData);
     }
 
     public void Emit(Enum eventName)
     {
         Emit(eventName.ToString(), null);
+        
     }
 
 }

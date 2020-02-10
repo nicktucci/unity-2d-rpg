@@ -27,25 +27,25 @@ public class AIController : UnitController
 
         ResetState();
 
-        events.Subscribe(Events.Unit.ResetState, target =>
+        events.Subscribe(Events.Unit.ResetState, e =>
         {
             ResetState();
         });
-        events.Subscribe(Events.Unit.SetTarget, target =>
+        events.Subscribe(Events.Unit.SetTarget, e =>
         {
-            SetState((Vector3)target);
+            SetState((Vector3)e.data);
         });
 
-        events.Subscribe(Events.Unit.Death, (data) =>
+        events.Subscribe(Events.Unit.Death, e =>
         {
             suspendMovement = true;
         });
 
-        events.Subscribe(Events.Unit.SuspendMove, (data) =>
+        events.Subscribe(Events.Unit.SuspendMove, e =>
         {
             suspendMovement = true;
         });
-        events.Subscribe(Events.Unit.RestoreMove, (data) =>
+        events.Subscribe(Events.Unit.RestoreMove, e =>
         {
             suspendMovement = false;
         });
@@ -127,7 +127,7 @@ public class AIController : UnitController
     public IEnumerator DoAttack(Vector3 targetLocation, string animationLabel)
     {
         suspendMovement = true;
-        events.Emit(Events.Anim.PlayCombatAnimation, animationLabel);
+        events.Emit(Events.Anim.PlayCombatAnimation, GameEvent.Create(this, animationLabel));
         UpdateFacingDirection(targetLocation);
 
         yield return new WaitForSeconds(0.20f);

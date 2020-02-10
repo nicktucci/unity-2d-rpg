@@ -11,9 +11,9 @@ public class BossEvents : MonoBehaviour
         gameObject.tag = "Boss";
         events = GetComponent<Events>();
 
-        events.Subscribe(Events.Unit.EnterCombat, attacker =>
+        events.Subscribe(Events.Unit.EnterCombat, e =>
         {
-            if(((Unit) attacker).gameObject.tag == "Player")
+            if(((Unit) e.data).gameObject.tag == "Player")
             {
                 GlobalEvents.Get.Emit(Events.Global.Misc.TriggerBossArea);
             }

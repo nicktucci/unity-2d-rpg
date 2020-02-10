@@ -22,12 +22,12 @@ public class NeutralAI : MonoBehaviour
         controller = GetComponent<AIController>();
         unit = GetComponent<Unit>();
 
-        events.Subscribe(Events.Unit.RecieveDamage, attacker =>
+        events.Subscribe(Events.Unit.RecieveDamage, e =>
         {
             if(target == null)
             {
-                events.Emit(Events.Unit.EnterCombat, attacker);
-                target = (Unit)attacker;
+                events.Emit(Events.Unit.EnterCombat, GameEvent.Create(this, e.data));
+                target = (Unit)e.data;
             }
         });
 
@@ -62,7 +62,7 @@ public class NeutralAI : MonoBehaviour
     }
     protected virtual IEnumerator FollowAndAttack(Unit target)
     {
-        events.Emit(Events.Unit.SetTarget, target.transform.position);
+        events.Emit(Events.Unit.SetTarget, GameEvent.Create(this, target.transform.position));
         if (controller.DistanceToTarget <= controller.StopDistance)
         {
             string animLabel = GetAttackLabel();

@@ -27,7 +27,7 @@ namespace BossAI
         {
             if (((float)unit.healthPoints.Value / unit.healthPoints.ValueMax) < enragePercent && !isEnraged)
             {
-                events.Emit(Events.Anim.SetBool, new EventData.SetBool() { name = "IsEnraged", val = true });
+                events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsEnraged", true));
                 isEnraged = true;
                 yield return new WaitForSeconds(2.1f);
             }
@@ -52,7 +52,7 @@ namespace BossAI
         {
             base.ResetState();
             isEnraged = false;
-            events.Emit(Events.Anim.SetBool, new EventData.SetBool() { name = "IsEnraged", val = false });
+            events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsEnraged", false));
 
         }
     }

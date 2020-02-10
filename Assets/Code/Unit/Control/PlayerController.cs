@@ -56,7 +56,7 @@ public class PlayerController : UnitController
             GlobalEvents.Get.Emit(Events.Global.Misc.PlayerDeath);
 
             IsBlocking = false;
-            events.Emit(Events.Anim.SetBool, new EventData.SetBool() { name = "IsBlocking", val = IsBlocking });
+            events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
         });
 
         gameObject.tag = "Player";
@@ -95,21 +95,21 @@ public class PlayerController : UnitController
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (!IsAttacking && !IsBlocking)
-                    GlobalEvents.Get.Emit(Events.Global.UI.ActivateInteractable, unit);
+                    GlobalEvents.Get.Emit(Events.Global.UI.ActivateInteractable, GameEvent.Create(this, unit));
             }
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (unit.IsAlive && !IsAttacking)
                 {
                     IsBlocking = true;
-                    events.Emit(Events.Anim.SetBool, new EventData.SetBool() { name = "IsBlocking", val = IsBlocking });
+                    events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
                 }
 
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 IsBlocking = false;
-                events.Emit(Events.Anim.SetBool, new EventData.SetBool() { name = "IsBlocking", val = IsBlocking });
+                events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
             }
         }
 
@@ -133,12 +133,12 @@ public class PlayerController : UnitController
     private void OnTriggerEnter2D(Collider2D other)
     {
         var i = other.GetComponent<IInteractable>();
-        if (i != null) GlobalEvents.Get.Emit(Events.Global.UI.QueueInteractable, i);
+        if (i != null) GlobalEvents.Get.Emit(Events.Global.UI.QueueInteractable, GameEvent.Create(this, i));
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         var i = other.GetComponent<IInteractable>();
-        if (i != null) GlobalEvents.Get.Emit(Events.Global.UI.DequeueInteractable, i);
+        if (i != null) GlobalEvents.Get.Emit(Events.Global.UI.DequeueInteractable, GameEvent.Create(this, i));
     }
     private IEnumerator DoAttack()
     {
@@ -146,7 +146,7 @@ public class PlayerController : UnitController
         string animLabel = rnd > .5f ? "Attack_1" : "Attack_2";
 
         controlsLocked = true;
-        events.Emit(Events.Anim.PlayCombatAnimation, animLabel);
+        events.Emit(Events.Anim.PlayCombatAnimation, GameEvent.Create(this, animLabel));
 
         yield return new WaitForSeconds(0.20f);
         events.Emit(Events.Audio.Combat_Swing);
