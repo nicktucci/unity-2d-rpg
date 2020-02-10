@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f846830cbf18c4f47a6cdfc01ca573e9, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  name: Player
+  healthPoints: 135
+  model: {fileID: 6726080720313391710, guid: b524732d051b5cd48ba3b2f42573ed47, type: 3}
+  modelScale: {x: 1, y: 1}
+  speed: 3.5
+  unitSounds:
+    death: {fileID: 8300000, guid: 3874d6706d2cf7144bd960bdfcf1afa1, type: 3}
+    footstep: {fileID: 8300000, guid: 86b862423659cc34e9d941d2db7d4bbf, type: 3}
+  combatSounds:
+    swingBegin: {fileID: 8300000, guid: 7a659ca3770ad044c90e8c71a72b5a78, type: 3}
+    swingConnect: {fileID: 8300000, guid: ef7b41ebd78568343b5ad2952a3d3d7f, type: 3}
+    recieveHit: {fileID: 8300000, guid: 129c1c9e3bd007e45b2dce0281b1240f, type: 3}
+  animationOverrides: []
+  dropTable:
+    items: []
+    dropChance: 0
