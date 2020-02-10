@@ -80,7 +80,7 @@ public class AIController : UnitController
                 else
                 {
                     DistanceToTarget = Mathf.Abs(target.y - transform.position.y);
-                    if (DistanceToTarget > 0.25f)
+                    if (DistanceToTarget > 0.1f)
                     {
                         target.x = transform.position.x;
                         transform.position = Vector3.MoveTowards(transform.position, target, runSpeed * Time.deltaTime);
@@ -137,10 +137,10 @@ public class AIController : UnitController
 
         if (unit.IsAlive)
         {
-            var hits = GetUnitsInMelee();
+            var hits = GetObjectsInMelee();
             foreach (var hit in hits)
             {
-                hit.SufferDamage(UnityEngine.Random.Range(5, 11), unit);
+                hit.RecieveAttack(UnityEngine.Random.Range(5, 11), unit);
                 events.Emit(Events.Audio.Combat_Connect);
             }
 

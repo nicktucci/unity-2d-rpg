@@ -15,7 +15,7 @@ public class PlayerController : UnitController
 
     public override UnitDirection Direction => moveModule != null ? moveModule.Direction : UnitDirection.None;
 
-    public bool hasInputFieldSelection;
+    private bool hasInputFieldSelection;
 
 
     public Coroutine attackRoutine;
@@ -155,11 +155,11 @@ public class PlayerController : UnitController
 
         if (unit.IsAlive)
         {
-            var hits = GetUnitsInMelee();
+            var hits = GetObjectsInMelee();
             foreach (var hit in hits)
             {
-                hit.SufferDamage(UnityEngine.Random.Range(6,12), this.GetComponent<Unit>());
-                events.Emit(Events.Audio.Combat_Connect);
+                hit.RecieveAttack(UnityEngine.Random.Range(6,12), unit);
+                if(hit is Unit) events.Emit(Events.Audio.Combat_Connect);
             }
         }
 

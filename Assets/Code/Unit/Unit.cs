@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Events))]
-public class Unit : WorldObject
+public class Unit : WorldObject, IAttackable
 {
     [SerializeField]
     private UnitData _data = default;
@@ -13,6 +13,8 @@ public class Unit : WorldObject
     public AttributeInt healthPoints = new AttributeInt(1);
 
     public bool IsAlive { get { return healthPoints.Value > 0; } }
+
+    public bool IsValidTarget => IsAlive;
 
     private void Awake()
     {
@@ -59,17 +61,6 @@ public class Unit : WorldObject
         }
     }
 
-    public void SufferDamage(int amount, Unit attacker)
-    {
-        if (IsAlive)
-        {
-            events.Emit(Events.Unit.RecieveDamage, GameEvent.Create(this, attacker));
-            events.Emit(Events.Audio.Combat_RecieveHit);
-
-            healthPoints.Value -= amount;
-        }
-    }
-
     public void ResetState()
     {
         healthPoints.Value = data.healthPoints;
@@ -88,4 +79,14 @@ public class Unit : WorldObject
         this.healthPoints.Value = (int)(this.healthPoints.ValueMax * _health);
     }
 
+    public void RecieveAttack(int damage, Unit attacker)
+    {
+        if (IsAlive)
+        {
+            events.Emit(Events.Unit.RecieveDamage, GameEvent.Create(this, attacker));
+            events.Emit(Events.Audio.Combat_RecieveHit);
+
+            healthPoints.Value -= damage;
+        }
+    }
 }

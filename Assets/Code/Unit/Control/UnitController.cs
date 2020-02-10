@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,34 +22,50 @@ public abstract class UnitController : MonoBehaviour
     }
 
 
-    readonly float meleeSwingBoxRight = 1.05f;
-    readonly float meleeSwingBoxSize = 1.05f;
-    readonly float meleeSwingBoxHeight = .7f;
-    protected Unit[] GetUnitsInMelee()
+    readonly float meleeSwingBoxRight = 0.61f;
+    readonly float meleeSwingBoxUp = .5f;
+    readonly float meleeSwingBoxWidth = 1.5f;
+    readonly float meleeSwingBoxHeight = 1f;
+    protected IAttackable[] GetObjectsInMelee()
     {
-        HashSet<Unit> res = new HashSet<Unit>();
-        var mask = 1 << LayerMask.NameToLayer("Unit");
+        HashSet<IAttackable> res = new HashSet<IAttackable>();
 
         float dir = (Direction == UnitDirection.Right ? 1 : -1);
-        var hits = Physics2D.OverlapBoxAll(transform.position + (Vector3.right * meleeSwingBoxRight * dir) + Vector3.up, Vector2.one * meleeSwingBoxSize, 0, mask);
+        var hits = Physics2D.OverlapBoxAll(GetMeleeHitPosition(dir), GetMeleeHitSize(), 0);
         foreach (var hit in hits)
         {
-            var udata = hit.transform.GetComponent<Unit>();
-            if (udata != null && udata.IsAlive)
+            var i = hit.transform.GetComponent<IAttackable>();
+            if (i != null && i.IsValidTarget && IsTargetInRealisticY(hit.transform.position))
             {
-                res.Add(udata);
+                if (hit.gameObject == this.gameObject) continue;
+                res.Add(i);
             }
         }
-        var final = new Unit[res.Count];
+        var final = new IAttackable[res.Count];
         res.CopyTo(final);
         return final;
+    }
+
+    private bool IsTargetInRealisticY(Vector3 position)
+    {
+        return Mathf.Abs(transform.position.y - position.y) < 0.26f;
+    }
+
+    private Vector2 GetMeleeHitSize()
+    {
+        return (Vector2.right * meleeSwingBoxWidth) + (Vector2.up * meleeSwingBoxHeight);
+    }
+
+    private Vector3 GetMeleeHitPosition(float dir)
+    {
+        return transform.position + (Vector3.right * meleeSwingBoxRight * dir) + (Vector3.up * meleeSwingBoxUp);
     }
 
     private void OnDrawGizmos()
     {
         float dir = (Direction == UnitDirection.Right ? 1 : -1);
         
-        Gizmos.DrawWireCube(transform.position + (Vector3.right * meleeSwingBoxRight * dir) + (Vector3.up * meleeSwingBoxHeight), Vector2.one * meleeSwingBoxSize);
+        Gizmos.DrawWireCube(GetMeleeHitPosition(dir), GetMeleeHitSize());
     }
 
     public abstract UnitDirection Direction { get; }

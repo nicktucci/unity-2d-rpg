@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5208869663883566118}
   - component: {fileID: 7539760343408066307}
+  - component: {fileID: 2804975568896385985}
   m_Layer: 8
   m_Name: hitbox
   m_TagString: Untagged
@@ -138,6 +139,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37, y: 0.28382182}
   m_EdgeRadius: 0
+--- !u!114 &2804975568896385985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563935782377533132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3988dc4624d61f44bc3a51d9e0371f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitClip: {fileID: 8300000, guid: 8aed99232ceb1d844835dcdc8d36628a, type: 3}
+  volume: 1
 --- !u!1001 &3747205893641195633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -145,6 +160,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 217875753645432864, guid: 2d4287f47bfdf384396ce3224a1e9303,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 329058427149160459, guid: 2d4287f47bfdf384396ce3224a1e9303,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1354251918099415555, guid: 2d4287f47bfdf384396ce3224a1e9303,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,10 +225,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1369490381452300503, guid: 2d4287f47bfdf384396ce3224a1e9303,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4301509745481810601, guid: 2d4287f47bfdf384396ce3224a1e9303,
         type: 3}
       propertyPath: m_Name
       value: Torch-collision
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946316263849643900, guid: 2d4287f47bfdf384396ce3224a1e9303,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5538512070330731513, guid: 2d4287f47bfdf384396ce3224a1e9303,
         type: 3}
