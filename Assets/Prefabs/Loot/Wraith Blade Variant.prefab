@@ -1,5 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &484738037480177102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033064489800246844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481de66c31f7f3d47bf17e35f3d6789d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5838428000482441471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4033064489800246844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb32c47007ff6347ad07feaaea512b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingIndex: 0
+  name: Wraith Blade
+  equipObject: {fileID: 8983997376954431575, guid: bb43e8e9bd50355459871b7da799c714,
+    type: 3}
+  slot: 1
 --- !u!1001 &860509925854085946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4326120853746099462, guid: bfbd2626b9bd9a74193e706b383a90ca,
         type: 3}
       propertyPath: m_Name
-      value: Ghostblade Variant
+      value: Wraith Blade Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4326120853746099513, guid: bfbd2626b9bd9a74193e706b383a90ca,
         type: 3}
@@ -153,5 +182,107 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.8091524
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8704442528482856276, guid: bfbd2626b9bd9a74193e706b383a90ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4326120853746099513, guid: bfbd2626b9bd9a74193e706b383a90ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bfbd2626b9bd9a74193e706b383a90ca, type: 3}
+--- !u!1 &4033064489800246844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4326120853746099462, guid: bfbd2626b9bd9a74193e706b383a90ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 860509925854085946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2462250983594769308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3015873596674193574, guid: bfbd2626b9bd9a74193e706b383a90ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 860509925854085946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4400086466196554962
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2462250983594769308}
+    m_Modifications:
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.71735233
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.69671065
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -91.673004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8301
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8301
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628096178719816138, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983997376954431575, guid: bb43e8e9bd50355459871b7da799c714,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon Variant 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb43e8e9bd50355459871b7da799c714, type: 3}

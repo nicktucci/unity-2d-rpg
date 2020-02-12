@@ -81,6 +81,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4090157331904526649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376478378692893762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481de66c31f7f3d47bf17e35f3d6789d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1536362536995588400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376478378692893762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb32c47007ff6347ad07feaaea512b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingIndex: 0
+  name: Knight's Armor
+  equipObject: {fileID: 1878946010731702983, guid: ab18efb961d5618429fe6770b05b8275,
+    type: 3}
+  slot: 0
 --- !u!1001 &7238615782291208516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,8 +213,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.07
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4326120853746099513, guid: bfbd2626b9bd9a74193e706b383a90ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bfbd2626b9bd9a74193e706b383a90ca, type: 3}
+--- !u!1 &6376478378692893762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4326120853746099462, guid: bfbd2626b9bd9a74193e706b383a90ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7238615782291208516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5597468275593069026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3015873596674193574, guid: bfbd2626b9bd9a74193e706b383a90ca,

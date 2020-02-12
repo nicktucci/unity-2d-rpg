@@ -29,9 +29,8 @@ MonoBehaviour:
     overrideAnim: Death_2
   dropTable:
     items:
-    - {fileID: 7885262532104679993, guid: 568324ec52c200d4e9c188388bddf306, type: 3}
     - {fileID: 6376478378692893762, guid: aba13d1f3976c3e41811edc624f66234, type: 3}
-    dropChance: 0.6
+    dropChance: 1
   meleeAttacks:
   - {fileID: 11400000, guid: 7f6e70c866afd62419547dc16409bfc3, type: 2}
   - {fileID: 11400000, guid: 870cbcc001aea28459ae793f61437008, type: 2}

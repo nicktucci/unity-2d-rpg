@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Events))]
 public class UnitItemDisplay : MonoBehaviour
 {
     Transform model;
@@ -40,16 +41,31 @@ public class UnitItemDisplay : MonoBehaviour
     private Dictionary<string, Transform> cache = new Dictionary<string, Transform>();
     private Dictionary<Transform, Transform> slotClones = new Dictionary<Transform, Transform>();
 
+    private Events events;
 
     private void Start()
     {
+        events = GetComponent<Events>();
         model = GetComponentInChildren<Animator>().transform;
 
         CacheAll();
         DestroyDefaults();
 
         LoadArmorObject(armorSetDefault);
-        LoadSlot(cache[PATH_WEAPON], weaponDefault);
+        LoadWeapon(weaponDefault);
+
+        events.Subscribe(Events.Unit.EquipObject, e => {
+            Debug.Log("...");
+            var o = (EquippableObject.EquipableEvent)e;
+            if(o.slot == EquippableObject.EquipSlot.Armor)
+            {
+                LoadArmorObject(o.data);
+            } else
+            {
+                LoadWeapon(o.data);
+
+            }
+        });
     }
 
     private void LoadArmorObject(GameObject armor)
@@ -70,7 +86,11 @@ public class UnitItemDisplay : MonoBehaviour
         LoadSlot(cache[PATH_LEG + "F"], leg);
         LoadSlot(cache[PATH_LEG + "B"], leg);
     }
+    private void LoadWeapon(GameObject obj)
+    {
+        LoadSlot(cache[PATH_WEAPON], obj);
 
+    }
     private void LoadSlot(Transform transform, GameObject obj, float dir = 1)
     {
         if(slotClones.ContainsKey(transform))

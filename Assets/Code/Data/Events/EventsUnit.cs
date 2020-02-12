@@ -9,6 +9,7 @@
         SuspendMove,
         RestoreMove,
         EnterCombat,
-        ResetState
+        ResetState,
+        EquipObject
     }
 }

@@ -202,17 +202,17 @@ PrefabInstance:
     - target: {fileID: 1793670843071001979, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.14901961
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1793670843071001979, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.14901961
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1793670843071001979, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.14901961
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794331300114489161, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}
@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 1878946010731702983, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}
       propertyPath: m_Name
-      value: Profaned Knight
+      value: Profaned Knight Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1880599785585877865, guid: ab18efb961d5618429fe6770b05b8275,
         type: 3}

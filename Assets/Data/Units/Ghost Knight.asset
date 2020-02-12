@@ -30,7 +30,6 @@ MonoBehaviour:
   dropTable:
     items:
     - {fileID: 4033064489800246844, guid: 215904f3764d6ba4dbd66933aa60e390, type: 3}
-    - {fileID: 7059787305631658106, guid: 13e753467d1ab3b40b2d1df64baf6507, type: 3}
     - {fileID: 6376478378692893762, guid: e8ed1317124cf024aa13df7633f9783e, type: 3}
     dropChance: 1
   meleeAttacks:
