@@ -5,9 +5,9 @@
         public enum Misc
         {
             PlayerDeath,
-            TriggerBossArea,
-            CheckPointReset
-
+            BossEngaged,
+            CheckPointReset,
+            BossDefeated
         }
 
         public enum UI

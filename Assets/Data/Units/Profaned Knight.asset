@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Profaned Knight
   m_EditorClassIdentifier: 
   name: Ardos, the Profaned Knight
-  healthPoints: 300
+  healthPoints: 400
   model: {fileID: 3356916234636602375, guid: 795edaa0788cb2b48b955805e6621de8, type: 3}
   modelScale: {x: 1.3, y: 1.3}
   speed: 3.5
   unitSounds:
-    death: {fileID: 8300000, guid: 2393f32040b9b6143a42b6572950d064, type: 3}
+    death: {fileID: 8300000, guid: ced331c588937644d8e5718ac52f2a9c, type: 3}
     footstep: {fileID: 8300000, guid: de2f18b058208a849a54f29f7e3617a1, type: 3}
   combatSounds:
     swingBegin: {fileID: 8300000, guid: 15fdc5ee211123d4982a9cbf8c370cb7, type: 3}
@@ -30,4 +30,10 @@ MonoBehaviour:
   dropTable:
     items:
     - {fileID: 7885262532104679993, guid: 568324ec52c200d4e9c188388bddf306, type: 3}
-    dropChance: 1
+    - {fileID: 6376478378692893762, guid: aba13d1f3976c3e41811edc624f66234, type: 3}
+    dropChance: 0.6
+  meleeAttacks:
+  - {fileID: 11400000, guid: 7f6e70c866afd62419547dc16409bfc3, type: 2}
+  - {fileID: 11400000, guid: 870cbcc001aea28459ae793f61437008, type: 2}
+  specialAttacks:
+  - {fileID: 11400000, guid: 954aa6e49a851024ea64e4870078ab2e, type: 2}

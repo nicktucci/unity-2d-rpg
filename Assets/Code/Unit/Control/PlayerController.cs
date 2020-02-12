@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -56,7 +55,7 @@ public class PlayerController : UnitController
             GlobalEvents.Get.Emit(Events.Global.Misc.PlayerDeath);
 
             IsBlocking = false;
-            events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
+            events.Emit(Events.Anim.SetBool, new EventAnimBool(this, "IsBlocking", IsBlocking));
         });
 
         gameObject.tag = "Player";
@@ -90,7 +89,10 @@ public class PlayerController : UnitController
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (!IsAttacking && !IsBlocking)
-                    attackRoutine = StartCoroutine(DoAttack());
+                {
+                    var attack = unit.data.meleeAttacks[Random.Range(0, unit.data.meleeAttacks.Length)];
+                    attackRoutine = StartCoroutine(DoAttack(attack));
+                }
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -102,14 +104,14 @@ public class PlayerController : UnitController
                 if (unit.IsAlive && !IsAttacking)
                 {
                     IsBlocking = true;
-                    events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
+                    events.Emit(Events.Anim.SetBool, new EventAnimBool(this, "IsBlocking", IsBlocking));
                 }
 
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
                 IsBlocking = false;
-                events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsBlocking", IsBlocking));
+                events.Emit(Events.Anim.SetBool, new EventAnimBool(this, "IsBlocking", IsBlocking));
             }
         }
 
@@ -140,40 +142,20 @@ public class PlayerController : UnitController
         var i = other.GetComponent<IInteractable>();
         if (i != null) GlobalEvents.Get.Emit(Events.Global.UI.DequeueInteractable, GameEvent.Create(this, i));
     }
-    private IEnumerator DoAttack()
+
+    protected override void PreAttack()
     {
-        float rnd = UnityEngine.Random.Range(0, 1f);
-        string animLabel = rnd > .5f ? "Attack_1" : "Attack_2";
-
         controlsLocked = true;
-        events.Emit(Events.Anim.PlayCombatAnimation, GameEvent.Create(this, animLabel));
-
-        yield return new WaitForSeconds(0.20f);
-        events.Emit(Events.Audio.Combat_Swing);
-
-        yield return new WaitForSeconds(0.20f);
-
-        if (unit.IsAlive)
-        {
-            var hits = GetObjectsInMelee();
-            foreach (var hit in hits)
-            {
-                hit.RecieveAttack(UnityEngine.Random.Range(6,12), unit);
-                if(hit is Unit) events.Emit(Events.Audio.Combat_Connect);
-            }
-        }
-
-        yield return new WaitForSeconds(0.30f);
-
+    }
+    protected override void PostAttack()
+    {
         attackRoutine = null;
         if (unit.IsAlive)
         {
             controlsLocked = false;
         }
-
     }
 
-    
 
 
 }

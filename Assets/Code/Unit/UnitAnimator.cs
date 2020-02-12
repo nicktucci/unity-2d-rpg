@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class UnitAnimator : MonoBehaviour
     private float combatIdleTime = 0;
     private float recoilCooldown = 0;
 
+    private Dictionary<string, AnimationClip> clipLibrary;
 
 
     private void Update()
@@ -21,6 +23,8 @@ public class UnitAnimator : MonoBehaviour
         UpdateIdle();
         if (recoilCooldown > 0) recoilCooldown -= Time.deltaTime;
     }
+
+
 
     private void Start()
     {
@@ -30,12 +34,13 @@ public class UnitAnimator : MonoBehaviour
 
         anim.gameObject.AddComponent<AnimEventBubbler>();
 
+        UpdateAnimationLibrary();
 
         events.MoveStateChanged += UpdateMovementState;
 
         events.Subscribe(Events.Anim.PlayDeathAnimation, e =>
         {
-            string label = unit.data.GetOverrideAnimation(Animations.Death) ?? "Death";
+            string label = unit.data.GetOverrideAnimation(AnimationLabel.Death) ?? "Death";
             anim.Play(label);
 
         });
@@ -43,7 +48,8 @@ public class UnitAnimator : MonoBehaviour
         {
             if (unit.IsAlive)
             {
-                anim.Play((string)e.data);
+                string label = (string)e.data;
+                anim.CrossFadeInFixedTime(label, 0.05f, -1, 0);
                 combatIdleTime = 2.5f;
             }
         });
@@ -51,11 +57,7 @@ public class UnitAnimator : MonoBehaviour
         {
             FaceTarget((Transform)e.data);
         });
-        events.Subscribe(Events.Anim.SetBool, e =>
-        {
-            var ec = (AnimBoolEvent)e;
-            anim.SetBool(ec.name, ec.data);
-        });
+
         events.Subscribe(Events.Unit.RecieveDamage, data =>
         {
             if(recoilCooldown <= 0)
@@ -69,17 +71,36 @@ public class UnitAnimator : MonoBehaviour
             combatIdleTime = 0;
             recoilCooldown = 0;
 
-            anim.SetFloat("AmountCombatIdle", 0);
-            anim.SetFloat("AmountCombatIdle", 0);
-
-            anim.SetFloat("Magnitude", 0);
-            anim.ResetTrigger("Recoil");
-
+            // Resets all animator variables
             anim.Rebind();
 
+            anim.SetFloat("Speed", unit.AnimationScale);
         });
-
+        events.Subscribe(Events.Anim.SetBool, e =>
+        {
+            var a = (EventAnimBool)e;
+            anim.SetBool(a.name, a.data);
+        });
+        events.Subscribe(Events.Anim.SetFloat, e =>
+        {
+            var a = (EventAnimFloat)e;
+            Debug.Log($"Changed anim speed to {a.data}", this.gameObject);
+            anim.SetFloat(a.name, a.data);
+        });
     }
+
+    private void UpdateAnimationLibrary()
+    {
+        clipLibrary = new Dictionary<string, AnimationClip>();
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            clipLibrary[clip.name] = clip;
+        }
+    }
+
+    
+
     protected void UpdateIdle()
     {
         if (combatIdleTime > 0)

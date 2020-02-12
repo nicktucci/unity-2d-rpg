@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttributeInt : Attribute<int>
 {
     public new Action<AttributeInt, int, int> OnChanged;
+    public float Percent { get => (float)value / (float)valueMax; }
 
     protected override void InvokeOnChanged(int value, int oldValue)
     {

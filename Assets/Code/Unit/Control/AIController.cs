@@ -124,30 +124,15 @@ public class AIController : UnitController
 
     }
 
-    public IEnumerator DoAttack(Vector3 targetLocation, string animationLabel)
+
+    protected override void PreAttack()
     {
         suspendMovement = true;
-        events.Emit(Events.Anim.PlayCombatAnimation, GameEvent.Create(this, animationLabel));
-        UpdateFacingDirection(targetLocation);
+        UpdateFacingDirection(target);
 
-        yield return new WaitForSeconds(0.20f);
-        events.Emit(Events.Audio.Combat_Swing);
-
-        yield return new WaitForSeconds(0.20f);
-
-        if (unit.IsAlive)
-        {
-            var hits = GetObjectsInMelee();
-            foreach (var hit in hits)
-            {
-                hit.RecieveAttack(UnityEngine.Random.Range(5, 11), unit);
-                events.Emit(Events.Audio.Combat_Connect);
-            }
-
-        }
-
-        yield return new WaitForSeconds(0.30f);
-
+    }
+    protected override void PostAttack()
+    {
         suspendMovement = false;
 
     }

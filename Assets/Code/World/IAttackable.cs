@@ -8,5 +8,5 @@ using System.Threading.Tasks;
     public interface IAttackable
     {
     bool IsValidTarget { get;  }
-    void RecieveAttack(int damage, Unit attacker);
+    void ReceiveAttack(int damage, Unit attacker);
     }

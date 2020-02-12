@@ -28,7 +28,7 @@ public class BossUI : MonoBehaviour
         {
             ResetState();
         });
-        GlobalEvents.Get.Subscribe(Events.Global.Misc.TriggerBossArea, data =>
+        GlobalEvents.Get.Subscribe(Events.Global.Misc.BossEngaged, data =>
         {
             FindAndLinkBoss();
         });

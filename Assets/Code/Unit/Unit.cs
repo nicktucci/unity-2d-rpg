@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Events))]
-public class Unit : WorldObject, IAttackable
+public sealed class Unit : WorldObject, IAttackable
 {
     [SerializeField]
     private UnitData _data = default;
@@ -14,6 +14,12 @@ public class Unit : WorldObject, IAttackable
 
     public bool IsAlive { get { return healthPoints.Value > 0; } }
 
+    private float animSpeed;
+    public float AnimationScale { get => animSpeed; set {
+            animSpeed = value;
+            events.Emit(Events.Anim.SetFloat, new EventAnimFloat(this, "Speed", animSpeed));
+    } }
+    
     public bool IsValidTarget => IsAlive;
 
     private void Awake()
@@ -26,12 +32,18 @@ public class Unit : WorldObject, IAttackable
             model.transform.localScale = new Vector3(data.modelScale.x, data.modelScale.y, 1);
         }
     }
-    private void Start()
+    private IEnumerator Start()
     {
         events = GetComponent<Events>();
         gameObject.layer = LayerMask.NameToLayer("Unit");
         healthPoints.Reset(data.healthPoints);
         healthPoints.OnChanged += OnHealthChange;
+
+        yield return null;
+        if(animSpeed == 0)
+        {
+            AnimationScale = 1f;
+        }
     }
 
     private void OnHealthChange(AttributeInt attr, int v, int ov)
@@ -64,7 +76,7 @@ public class Unit : WorldObject, IAttackable
     public void ResetState()
     {
         healthPoints.Value = data.healthPoints;
-        
+        AnimationScale = 1f;
 
         events.Emit(Events.Unit.ResetState);
     }
@@ -79,7 +91,7 @@ public class Unit : WorldObject, IAttackable
         this.healthPoints.Value = (int)(this.healthPoints.ValueMax * _health);
     }
 
-    public void RecieveAttack(int damage, Unit attacker)
+    public void ReceiveAttack(int damage, Unit attacker)
     {
         if (IsAlive)
         {

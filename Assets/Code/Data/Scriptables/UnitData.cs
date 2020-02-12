@@ -7,20 +7,24 @@ public class UnitData : ScriptableObject
 {
     public new string name;
     public int healthPoints;
-    [Space]
+    [Header("Model")]
     public GameObject model;
     public Vector2 modelScale = Vector2.one;
     public float speed = 3.5f;
 
-    [Space]
+    [Header("Audio")]
     public UnitSounds unitSounds;
     public CombatSounds combatSounds;
-    [Space]
+    [Header("Animation")]
     public List<AnimationOverride> animationOverrides = new List<AnimationOverride>();
     private Dictionary<string, string> animOverridesDict;
 
-    [Space]
+    [Header("Drops")]
     public UnitDroptable dropTable;
+
+    [Header("Attacks")]
+    public MeleeAttackData[] meleeAttacks;
+    public MeleeAttackData[] specialAttacks;
 
     private void OnEnable()
     {
@@ -32,7 +36,7 @@ public class UnitData : ScriptableObject
     }
 
 
-    public string GetOverrideAnimation(Animations anim)
+    public string GetOverrideAnimation(AnimationLabel anim)
     {
         if (animOverridesDict.ContainsKey(anim.ToString()))
         {
@@ -45,7 +49,7 @@ public class UnitData : ScriptableObject
 [System.Serializable]
 public struct AnimationOverride
 {
-    public Animations animation;
+    public AnimationLabel animation;
     public string overrideAnim;
 }
 [System.Serializable]
@@ -54,7 +58,7 @@ public struct UnitDroptable
     public List<GameObject> items;
     public float dropChance;
 }
-public enum Animations
+public enum AnimationLabel
 {
     Attack_1,
     Attack_2,

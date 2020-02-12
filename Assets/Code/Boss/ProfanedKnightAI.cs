@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,27 @@ namespace BossAI
 {
     public class ProfanedKnightAI : NeutralAI
     {
-        private bool isEnraged = false;
-        private float enragePercent = 0.5f;
+        private Stage stage = Stage.Stage1;
+        private readonly float stage2Percent = 0.75f;
+        private readonly float stage3Percent = 0.37f;
+
+        private enum Stage
+        {
+            Stage1,
+            Stage2,
+            Stage3
+        }
+        protected override void StartAI()
+        {
+            StartCoroutine(ChangeStage(Stage.Stage1));
+        }
         protected override IEnumerator AI()
         {
             while (unit.IsAlive)
             {
                 if (target && target.IsAlive)
                 {
-                    yield return CheckEnrage();
+                    yield return CheckStage();
                     yield return FollowAndAttack(target);
                     CycleTargets();
 
@@ -23,37 +36,71 @@ namespace BossAI
             }
         }
 
-        private IEnumerator CheckEnrage()
+        private IEnumerator CheckStage()
         {
-            if (((float)unit.healthPoints.Value / unit.healthPoints.ValueMax) < enragePercent && !isEnraged)
+            switch (stage)
             {
-                events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsEnraged", true));
-                isEnraged = true;
-                yield return new WaitForSeconds(2.1f);
+                case Stage.Stage1:
+                    if (unit.healthPoints.Percent <= stage2Percent) yield return ChangeStage(Stage.Stage2);
+
+                    break;
+                case Stage.Stage2:
+                    if (unit.healthPoints.Percent <= stage3Percent) yield return ChangeStage(Stage.Stage3);
+
+                break;
             }
         }
 
-        protected override string GetAttackLabel()
+        private IEnumerator ChangeStage(Stage stage)
         {
-            string animLabel;
-            if (isEnraged)
+            this.stage = stage;
+            Debug.Log("Changed stage");
+
+            switch (stage)
             {
-                animLabel = "Attack_Enraged";
+                case Stage.Stage1:
+                    unit.AnimationScale = 2f;
+                    Debug.Log("Entered stage 1");
+                    break;
+                case Stage.Stage2:
+                    unit.AnimationScale = 1f;
+                    Debug.Log("Entered stage 2");
+                    break;
+                case Stage.Stage3:
+                    Debug.Log("Entered stage 3");
+                    unit.AnimationScale = 1f;
+                    events.Emit(Events.Anim.SetBool, new EventAnimBool(this, "IsEnraged", true));
+                    yield return new WaitForSeconds(2.1f);
+                    break;
             }
-            else
-            {
-                float rnd = UnityEngine.Random.Range(0, 1f);
-                animLabel = rnd > .5f ? "Attack_1" : "Attack_2";
-            }
-            return animLabel;
         }
 
         public override void ResetState()
         {
             base.ResetState();
-            isEnraged = false;
-            events.Emit(Events.Anim.SetBool, new AnimBoolEvent(this, "IsEnraged", false));
+            events.Emit(Events.Anim.SetBool, new EventAnimBool(this, "IsEnraged", false));
 
+        }
+
+        protected override MeleeAttackData ChooseMeleeAttackData()
+        {
+            switch (stage)
+            {
+                case Stage.Stage1:
+                    return base.ChooseMeleeAttackData();
+                case Stage.Stage2:
+                    return base.ChooseMeleeAttackData();
+                case Stage.Stage3:
+                    if (UnityEngine.Random.Range(0f, 1f) > 0.6f)
+                    {
+                        return unit.data.specialAttacks[0];
+                    }
+                    else
+                    {
+                        return base.ChooseMeleeAttackData();
+                    }
+            }
+            return null;
         }
     }
 }

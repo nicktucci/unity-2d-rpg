@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +35,7 @@ public class NeutralAI : MonoBehaviour
             ResetState();
         });
 
-        routine = StartCoroutine(AI());
+        ResetState();
     }
     protected virtual IEnumerator AI()
     {
@@ -56,19 +55,25 @@ public class NeutralAI : MonoBehaviour
         if (!target.IsAlive) target = null;
     }
 
-    protected virtual string GetAttackLabel()
-    {
-        return "Attack_1";
-    }
     protected virtual IEnumerator FollowAndAttack(Unit target)
     {
         events.Emit(Events.Unit.SetTarget, GameEvent.Create(this, target.transform.position));
         if (controller.DistanceToTarget <= controller.StopDistance)
         {
-            string animLabel = GetAttackLabel();
-            yield return StartCoroutine(controller.DoAttack(target.transform.position, animLabel));
+            yield return StartCoroutine(ChooseAttack());
         }
     }
+
+    protected virtual IEnumerator ChooseAttack()
+    {
+        return controller.DoAttack(ChooseMeleeAttackData());
+    }
+
+    protected virtual MeleeAttackData ChooseMeleeAttackData()
+    {
+        return unit.data.meleeAttacks[Random.Range(0, unit.data.meleeAttacks.Length)];
+    }
+
     public virtual void ResetState()
     {
         if(routine != null)
@@ -76,8 +81,14 @@ public class NeutralAI : MonoBehaviour
             StopCoroutine(routine);
         }
         target = null;
+        StartAI();
+
         routine = StartCoroutine(AI());
 
+    }
+
+    protected virtual void StartAI()
+    {
     }
 }
 

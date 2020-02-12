@@ -18,7 +18,7 @@ public class AttackableObject : MonoBehaviour, IAttackable
         AddAudioSource();
     }
 
-    public void RecieveAttack(int damage, Unit attacker)
+    public void ReceiveAttack(int damage, Unit attacker)
     {
         if (hitClip != null) src.PlayOneShot(hitClip, volume);
     }

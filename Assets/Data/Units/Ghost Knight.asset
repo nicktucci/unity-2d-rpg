@@ -24,10 +24,16 @@ MonoBehaviour:
     swingBegin: {fileID: 8300000, guid: 84591bff253563248bfd44fe855f2256, type: 3}
     swingConnect: {fileID: 8300000, guid: 78bb78188db58844cb9bf6cc81ffe6b0, type: 3}
     recieveHit: {fileID: 8300000, guid: 20725f5e93407bc42a873c14db54283e, type: 3}
-  animationOverrides: []
+  animationOverrides:
+  - animation: 2
+    overrideAnim: Death_Fade
   dropTable:
     items:
     - {fileID: 4033064489800246844, guid: 215904f3764d6ba4dbd66933aa60e390, type: 3}
     - {fileID: 7059787305631658106, guid: 13e753467d1ab3b40b2d1df64baf6507, type: 3}
     - {fileID: 6376478378692893762, guid: e8ed1317124cf024aa13df7633f9783e, type: 3}
     dropChance: 1
+  meleeAttacks:
+  - {fileID: 11400000, guid: 7f6e70c866afd62419547dc16409bfc3, type: 2}
+  - {fileID: 11400000, guid: 870cbcc001aea28459ae793f61437008, type: 2}
+  specialAttacks: []

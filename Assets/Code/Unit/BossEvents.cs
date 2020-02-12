@@ -13,10 +13,15 @@ public class BossEvents : MonoBehaviour
 
         events.Subscribe(Events.Unit.EnterCombat, e =>
         {
-            if(((Unit) e.data).gameObject.tag == "Player")
+            if (((Unit)e.data).gameObject.tag == "Player")
             {
-                GlobalEvents.Get.Emit(Events.Global.Misc.TriggerBossArea);
+                GlobalEvents.Get.Emit(Events.Global.Misc.BossEngaged);
             }
+        });
+        events.Subscribe(Events.Unit.Death, e =>
+        {
+            GlobalEvents.Get.Emit(Events.Global.Misc.BossDefeated);
+            
         });
     }
 }
