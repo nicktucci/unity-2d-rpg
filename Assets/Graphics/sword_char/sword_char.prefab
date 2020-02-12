@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8091850837366042380}
   - component: {fileID: 8315107178181834912}
+  - component: {fileID: 7972992515389085175}
   m_Layer: 0
   m_Name: TabardF
   m_TagString: Untagged
@@ -81,6 +82,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &7972992515389085175
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605151532883867069}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
 --- !u!1 &3803035508164596748
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651429166010304058}
   - component: {fileID: 2832097689154889798}
+  - component: {fileID: 1464042464216000818}
   m_Layer: 0
   m_Name: ShoulderF
   m_TagString: Untagged
@@ -150,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 60
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 96c8352d915b29448a15bb2087eef769, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,6 +175,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &1464042464216000818
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803035508164596748}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 60
 --- !u!1 &8013271550599854284
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8443902202307362650}
   - component: {fileID: 8634494268869376970}
+  - component: {fileID: 2683084307041875945}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -313,7 +338,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d843bdc711e689e49b636a4b8a824c67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -325,6 +350,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &2683084307041875945
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8440898314597746888}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 50
 --- !u!1 &8441117461833507958
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8444759901807064330}
   - component: {fileID: 8634529617373597384}
+  - component: {fileID: 7346089762991185380}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -477,6 +514,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &7346089762991185380
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441125386346898082}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &8441190576722491088
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,6 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8444330142434015994}
   - component: {fileID: 8634616111900207636}
+  - component: {fileID: 1720165195557427326}
   m_Layer: 0
   m_Name: LegB
   m_TagString: Untagged
@@ -558,6 +607,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &1720165195557427326
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441190576722491088}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &8441449258091440892
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8444046231131797308}
   - component: {fileID: 8633745892619473400}
+  - component: {fileID: 239867482206134679}
   m_Layer: 0
   m_Name: helm
   m_TagString: Untagged
@@ -627,7 +688,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 52
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8eb2ff5d15ad57044863329a435b3394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -639,6 +700,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &239867482206134679
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441449258091440892}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 51
 --- !u!1 &8441793844370257552
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8444191720306917520}
   - component: {fileID: 8634606305410248648}
+  - component: {fileID: 3956825986013405434}
   m_Layer: 0
   m_Name: LegF
   m_TagString: Untagged
@@ -720,6 +793,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &3956825986013405434
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441793844370257552}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &8990684439380899717
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268166463194533801}
   - component: {fileID: 8173631001714994252}
+  - component: {fileID: 6590306662578854425}
   m_Layer: 0
   m_Name: ShoulderB
   m_TagString: Untagged
@@ -870,7 +955,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 48
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 96c8352d915b29448a15bb2087eef769, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -882,3 +967,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &6590306662578854425
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9162199669544510992}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 48

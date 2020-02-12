@@ -54,7 +54,6 @@ namespace BossAI
         private IEnumerator ChangeStage(Stage stage)
         {
             this.stage = stage;
-            Debug.Log("Changed stage");
 
             switch (stage)
             {

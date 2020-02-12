@@ -84,7 +84,7 @@ public class UnitAnimator : MonoBehaviour
         events.Subscribe(Events.Anim.SetFloat, e =>
         {
             var a = (EventAnimFloat)e;
-            Debug.Log($"Changed anim speed to {a.data}", this.gameObject);
+
             anim.SetFloat(a.name, a.data);
         });
     }

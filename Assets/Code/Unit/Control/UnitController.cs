@@ -96,9 +96,9 @@ public abstract class UnitController : MonoBehaviour
         timingTrigger *= duration;
         timingReleaseControl *= duration;
 
-        Debug.Log(timingBegin);
-        Debug.Log(timingTrigger);
-        Debug.Log(timingReleaseControl);
+        //Debug.Log(timingBegin);
+        //Debug.Log(timingTrigger);
+        //Debug.Log(timingReleaseControl);
 
 
         PreAttack();

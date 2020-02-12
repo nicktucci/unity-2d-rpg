@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player
   healthPoints: 135
-  model: {fileID: 6726080720313391710, guid: b524732d051b5cd48ba3b2f42573ed47, type: 3}
+  model: {fileID: 8441117461833507958, guid: 303351d92b8879a4bab8b8e86770f5c4, type: 3}
   modelScale: {x: 1, y: 1}
   speed: 3.5
   unitSounds:
