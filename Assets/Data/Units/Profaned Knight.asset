@@ -24,6 +24,8 @@ MonoBehaviour:
     swingBegin: {fileID: 8300000, guid: 15fdc5ee211123d4982a9cbf8c370cb7, type: 3}
     swingConnect: {fileID: 8300000, guid: b632cad940651c6478253c40dfd3a37b, type: 3}
     recieveHit: {fileID: 8300000, guid: 13df6a250d510cd49bbad4bd95d7ae16, type: 3}
+  onHitParticle: {fileID: 4467018473172677646, guid: 01af6abd74ad91d4b9c2a65efdca3954,
+    type: 3}
   animationOverrides:
   - animation: 2
     overrideAnim: Death_2

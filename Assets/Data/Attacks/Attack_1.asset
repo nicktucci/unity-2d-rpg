@@ -21,3 +21,5 @@ MonoBehaviour:
   up: 0.5
   width: 1.5
   height: 1.38
+  onHitParticle: {fileID: 4467018473172677646, guid: 01af6abd74ad91d4b9c2a65efdca3954,
+    type: 3}

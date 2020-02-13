@@ -18,4 +18,7 @@ public class MeleeAttackData : ScriptableObject
     public float up = .5f;
     public float width = 1.5f;
     public float height = 1f;
+
+
+
 }

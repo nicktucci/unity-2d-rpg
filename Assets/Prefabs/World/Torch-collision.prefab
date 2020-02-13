@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitClip: {fileID: 8300000, guid: 8aed99232ceb1d844835dcdc8d36628a, type: 3}
+  hitParticles: {fileID: 4467018473172677646, guid: d836732887105834d94ab8e914a4662b,
+    type: 3}
   volume: 1
 --- !u!1001 &3747205893641195633
 PrefabInstance:

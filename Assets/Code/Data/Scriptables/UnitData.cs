@@ -15,6 +15,8 @@ public class UnitData : ScriptableObject
     [Header("Audio")]
     public UnitSounds unitSounds;
     public CombatSounds combatSounds;
+    [Header("Effects")]
+    public GameObject onHitParticle;
     [Header("Animation")]
     public List<AnimationOverride> animationOverrides = new List<AnimationOverride>();
     private Dictionary<string, string> animOverridesDict;

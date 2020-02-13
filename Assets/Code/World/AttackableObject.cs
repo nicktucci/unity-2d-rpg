@@ -9,6 +9,8 @@ public class AttackableObject : MonoBehaviour, IAttackable
 
     [SerializeField]
     private AudioClip hitClip = default;
+    [SerializeField]
+    private GameObject hitParticles = default;
 
     [SerializeField]
     [Range(0,1)]
@@ -21,6 +23,12 @@ public class AttackableObject : MonoBehaviour, IAttackable
     public void ReceiveAttack(int damage, Unit attacker)
     {
         if (hitClip != null) src.PlayOneShot(hitClip, volume);
+        if(hitParticles != null)
+        {
+            var go = Instantiate(hitParticles, transform.parent);
+            go.transform.position = transform.position + (Vector3.up * 0.5f);
+            Destroy(go, 10);
+        }
     }
 
     private void AddAudioSource()

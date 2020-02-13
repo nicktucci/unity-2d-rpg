@@ -24,6 +24,8 @@ MonoBehaviour:
     swingBegin: {fileID: 8300000, guid: 7a659ca3770ad044c90e8c71a72b5a78, type: 3}
     swingConnect: {fileID: 8300000, guid: ef7b41ebd78568343b5ad2952a3d3d7f, type: 3}
     recieveHit: {fileID: 8300000, guid: 129c1c9e3bd007e45b2dce0281b1240f, type: 3}
+  onHitParticle: {fileID: 4467018473172677646, guid: 01af6abd74ad91d4b9c2a65efdca3954,
+    type: 3}
   animationOverrides: []
   dropTable:
     items: []

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour, IInteractable
 {
-    private List<Unit> units = new List<Unit>();
+    private HashSet<Unit> units = new HashSet<Unit>();
     private Dictionary<Unit, UnitState> unitStates = new Dictionary<Unit, UnitState>();
 
     public string InteractLabel => "Rest at bonfire";
@@ -55,7 +55,7 @@ public class Checkpoint : MonoBehaviour, IInteractable
             col = c;
         }
         if (col == null) throw new Exception("Colliders improperly setup on CheckPoint. Area collider should not be a trigger, second collider for interact approach SHOULD be a trigger.");
-        var hits = Physics2D.OverlapBoxAll(col.transform.position, col.size, 0);
+        var hits = Physics2D.OverlapBoxAll(col.transform.position + new Vector3(col.offset.x, col.offset.y), col.size, 0);
         foreach (var hit in hits)
         {
             Unit u = hit.GetComponent<Unit>();
@@ -63,6 +63,11 @@ public class Checkpoint : MonoBehaviour, IInteractable
             {
                 units.Add(u);
             }
+        }
+
+        foreach (var u in units)
+        {
+            Debug.Log($"[{this.name}] - parenting {u.name}");
         }
 
         col.enabled = false;

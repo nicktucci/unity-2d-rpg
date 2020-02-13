@@ -10,29 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f846830cbf18c4f47a6cdfc01ca573e9, type: 3}
-  m_Name: Ghost Knight
+  m_Name: Hollow Soldier
   m_EditorClassIdentifier: 
-  name: Ghost Knight
-  healthPoints: 45
-  model: {fileID: 1165931751612740448, guid: 53f460c9bf795574d8a6b6dbbac55da2, type: 3}
+  name: Hollow Soldier
+  healthPoints: 60
+  model: {fileID: 4421558732222686298, guid: 2d9bc53cb2c653d42b4efc620e49ff96, type: 3}
   modelScale: {x: 1, y: 1}
   speed: 3.5
   unitSounds:
-    death: {fileID: 8300000, guid: 3a6d7f15fb146ba449ddb8d7f79d7f39, type: 3}
-    footstep: {fileID: 0}
+    death: {fileID: 8300000, guid: f92f1649a0c29f247b51c44b1434605b, type: 3}
+    footstep: {fileID: 8300000, guid: de2f18b058208a849a54f29f7e3617a1, type: 3}
   combatSounds:
     swingBegin: {fileID: 8300000, guid: 84591bff253563248bfd44fe855f2256, type: 3}
     swingConnect: {fileID: 8300000, guid: 78bb78188db58844cb9bf6cc81ffe6b0, type: 3}
-    recieveHit: {fileID: 8300000, guid: 20725f5e93407bc42a873c14db54283e, type: 3}
-  onHitParticle: {fileID: 4467018473172677646, guid: 3d38ef9fda483c743aea19d26c9f5868,
+    recieveHit: {fileID: 8300000, guid: 129c1c9e3bd007e45b2dce0281b1240f, type: 3}
+  onHitParticle: {fileID: 4467018473172677646, guid: 01af6abd74ad91d4b9c2a65efdca3954,
     type: 3}
-  animationOverrides:
-  - animation: 2
-    overrideAnim: Death_Fade
+  animationOverrides: []
   dropTable:
-    items:
-    - {fileID: 4033064489800246844, guid: 215904f3764d6ba4dbd66933aa60e390, type: 3}
-    - {fileID: 6376478378692893762, guid: e8ed1317124cf024aa13df7633f9783e, type: 3}
+    items: []
     dropChance: 1
   meleeAttacks:
   - {fileID: 11400000, guid: 7f6e70c866afd62419547dc16409bfc3, type: 2}
